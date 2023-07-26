@@ -8,7 +8,7 @@ R__LOAD_LIBRARY(STV_Tools_cxx.so);
 void MissingEnergyEstimator(){
 
   double data_pot = 6e20;
-  bool save_weights = true;
+  bool save_weights = false;
 
   // load the MC
   TFile* f_in = TFile::Open("/pnfs/uboone/persistent/users/davidc/searchingfornues/v08_00_00_43/0928/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root"); 
@@ -78,7 +78,7 @@ void MissingEnergyEstimator(){
   t_out->SetDirectory(0);
 
   int nentries = t_in->GetEntries();
-  for(int ientry=2*nentries/3;ientry<nentries;ientry++){
+  for(int ientry=0;ientry<nentries;ientry++){
     if(ientry % 50000 == 0) std::cout << "Entry " << ientry << "/" << nentries << std::endl;
     t_in->GetEntry(ientry);
     mc_p->clear();
